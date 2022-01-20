@@ -11,7 +11,7 @@ const DynamicComponent = ({ blok }) => {
       blok,
     };
 
-    console.log(component);
+    // console.log(component);
 
     switch (component) {
       case "teaser":

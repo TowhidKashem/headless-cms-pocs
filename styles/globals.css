@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @font-face {
+  font-family: "Proxima Nova";
+  src: url(https://d1ayxb9ooonjts.cloudfront.net/03885108b01f0b92601b9be97af3aa9a.otf);
+} */
+
+body {
+  /* font: 1.4rem "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+}
+
 @layer components {
   .center {
     @apply max-w-screen-xl mx-auto p-4;

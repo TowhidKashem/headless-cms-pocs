@@ -1,11 +1,13 @@
 import Head from "next/head";
+import Script from "next/script";
 import styles from "../styles/Home.module.css";
 import Storyblok from "../lib/storyblok";
+import useStoryblok from "../hooks/useStoryBlok";
 import DynamicComponent from "../components/DynamicComponent";
 
 const Home = ({ story, preview }) => {
-  const enableBridge = true; // load the storyblok bridge everywhere
-  // const enableBridge = preview; // enable bridge only in prevew mode
+  const enablePreviewMode = process.env.ENVIRONMENT === "development";
+  story = useStoryblok(story, enablePreviewMode);
 
   return (
     <div className={styles.container}>
@@ -15,6 +17,11 @@ const Home = ({ story, preview }) => {
       </Head>
 
       <DynamicComponent blok={story.content} />
+
+      <Script
+        src="//app.storyblok.com/f/storyblok-v2-latest.js"
+        strategy="beforeInteractive"
+      />
     </div>
   );
 };
@@ -40,7 +47,6 @@ export async function getStaticProps({ preview = false }) {
       story: data ? data.story : null,
       preview,
     },
-    revalidate: 3600, // revalidate every hour
   };
 }
 

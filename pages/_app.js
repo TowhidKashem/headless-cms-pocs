@@ -15,7 +15,7 @@ function App({ Component, pageProps }) {
         <section className="center text-white py-6">
           <p>
             Bitly is excited to announce the acquisition of QR Code Generator,
-            the world's leading QR code platform. Check out our combined
+            the worlds leading QR code platform. Check out our combined
             capabilities.
           </p>
         </section>

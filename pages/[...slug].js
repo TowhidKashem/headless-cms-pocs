@@ -3,12 +3,12 @@ import DynamicComponent from "../components/DynamicComponent";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-import Storyblok, { useStoryblok } from "../lib/storyblok";
+import Storyblok from "../lib/storyblok";
 
 export default function Page({ story, preview }) {
-  const enableBridge = true; // load the storyblok bridge everywhere
-  // const enableBridge = preview; // enable bridge only in prevew mode
-  story = useStoryblok(story, enableBridge);
+  // const enableBridge = true; // load the storyblok bridge everywhere
+  // // const enableBridge = preview; // enable bridge only in prevew mode
+  // story = useStoryblok(story, enableBridge);
 
   return (
     <div className={styles.container}>

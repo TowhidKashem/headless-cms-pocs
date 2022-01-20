@@ -5,5 +5,6 @@ module.exports = {
   },
   env: {
     STORY_BLOK_ACCESS_TOKEN: process.env.STORY_BLOK_ACCESS_TOKEN,
+    ENVIRONMENT: process.env.ENVIRONMENT,
   },
 };
