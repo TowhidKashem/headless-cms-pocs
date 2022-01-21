@@ -4,7 +4,7 @@ import "../styles/globals.css";
 
 export default function App({ Component, pageProps }) {
   return (
-    <Layout>
+    <Layout {...pageProps}>
       <Component {...pageProps} />
       <Script
         src="//app.storyblok.com/f/storyblok-v2-latest.js"

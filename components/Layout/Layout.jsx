@@ -2,7 +2,7 @@ import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
 
-const Layout = ({ children }) => {
+const Layout = ({ story, preview, children }) => {
   return (
     <div className="bitly">
       <Head>
@@ -12,12 +12,12 @@ const Layout = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
+      {story && <Header blok={story.content.header[0]} />}
 
       <section className="center">{children}</section>
 
       <section style={{ background: "#0b1736" }}>
-        <section className="center text-center py-8">
+        <section className="center text-center py-16">
           <h2 className="font-semibold text-3xl text-white mb-5">
             More than a link shortener
           </h2>
