@@ -1,28 +1,21 @@
-import Head from "next/head";
-import Script from "next/script";
-import styles from "../styles/Home.module.css";
 import Storyblok from "../lib/storyblok";
 import useStoryblok from "../hooks/useStoryBlok";
-import DynamicComponent from "../components/DynamicComponent";
+// import RenderBlok from "../components/RenderBlok";
+
+import Hero from "../components/Bloks/Hero";
+import CardSpotlight from "../components/Bloks/CardSpotlight";
 
 const Home = ({ story, preview }) => {
   const enablePreviewMode = process.env.ENVIRONMENT === "development";
   story = useStoryblok(story, enablePreviewMode);
 
+  const { hero, card_spotlight } = story.content;
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <DynamicComponent blok={story.content} />
-
-      <Script
-        src="//app.storyblok.com/f/storyblok-v2-latest.js"
-        strategy="beforeInteractive"
-      />
-    </div>
+    <>
+      <Hero blok={hero[0]} />
+      <CardSpotlight blok={card_spotlight[0]} />
+    </>
   );
 };
 

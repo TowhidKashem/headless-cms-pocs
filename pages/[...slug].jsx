@@ -1,5 +1,5 @@
 import React from "react";
-import DynamicComponent from "../components/DynamicComponent";
+import RenderBlok from "../components/RenderBlok";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
@@ -21,7 +21,7 @@ export default function Page({ story, preview }) {
         <h1>{story ? story.name : "My Site"}</h1>
       </header>
 
-      <DynamicComponent blok={story.content} />
+      <RenderBlok blok={story.content} />
     </div>
   );
 }
