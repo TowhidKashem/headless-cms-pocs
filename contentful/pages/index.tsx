@@ -3,7 +3,6 @@ import { client } from "@lib/contentful";
 import Recipe from "@components/RecipeCard";
 
 const RecipeList: NextPage<{ recipes: any }> = ({ recipes }) => {
-  console.log("recipes", recipes);
   return (
     <section>
       {recipes.map((recipe) => (

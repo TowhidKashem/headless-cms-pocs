@@ -16,8 +16,6 @@ const RecipeDetail: NextPage<{ recipe: any }> = ({ recipe }) => {
     },
   } = featureImage.fields;
 
-  console.log(ingredients);
-
   return (
     <section>
       <Image src={"https:" + url} alt="" width={width} height={500} />
