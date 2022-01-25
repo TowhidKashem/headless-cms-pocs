@@ -14,3 +14,20 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header,
+.footer {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.card {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 15px;
+}

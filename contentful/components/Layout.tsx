@@ -3,9 +3,9 @@ import type { NextPage } from "next";
 const Layout: NextPage = ({ children }) => {
   return (
     <div className="bitly">
-      <header>hello world</header>
-      <main>{children}</main>
-      <footer>goodbye world</footer>
+      <header className="header">hello world</header>
+      <main className="content">{children}</main>
+      <footer className="footer">goodbye world</footer>
     </div>
   );
 };

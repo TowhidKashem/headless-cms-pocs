@@ -1,44 +1,28 @@
-import { useEffect, useState } from "react";
-import { createClient } from "contentful";
 import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
-import Person, { PersonType } from "@components/Person";
+import { client } from "@lib/contentful";
+import Recipe from "@components/RecipeCard";
 
-const Home: NextPage<{
-  readonly CONTENTFUL_SPACE_TOKEN: string;
-  readonly CONTENTFUL_ACCESS_TOKEN: string;
-}> = ({ CONTENTFUL_SPACE_TOKEN, CONTENTFUL_ACCESS_TOKEN }) => {
-  const client = createClient({
-    space: CONTENTFUL_SPACE_TOKEN,
-    accessToken: CONTENTFUL_ACCESS_TOKEN,
-  });
-
-  const [people, setPeople] = useState<PersonType[]>([]);
-
-  useEffect(() => {
-    client.getEntries().then(function (entries) {
-      console.log("entries", entries);
-      const people = entries.items.map(({ fields }) => fields);
-      setPeople(people as PersonType[]);
-    });
-  }, []);
-
+const RecipeList: NextPage<{ recipes: any }> = ({ recipes }) => {
+  console.log("recipes", recipes);
   return (
-    <div className={styles.container}>
-      {people.map((person) => (
-        <Person key={Math.random()} person={person} />
+    <section>
+      {recipes.map((recipe) => (
+        <Recipe key={recipe.sys.id} recipe={recipe} />
       ))}
-    </div>
+    </section>
   );
 };
 
-export async function getStaticProps({ preview = false }) {
+export async function getStaticProps() {
+  const res = await client.getEntries({
+    content_type: "recipe",
+  });
+
   return {
     props: {
-      CONTENTFUL_SPACE_TOKEN: process.env.CONTENTFUL_SPACE_TOKEN,
-      CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
+      recipes: res.items,
     },
   };
 }
 
-export default Home;
+export default RecipeList;
