@@ -1,21 +1,63 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.hero {
-  background: url(https://docrdsfx76ssb.cloudfront.net/static/1642175923/pages/wp-content/uploads/2020/05/illo-desktop-1440x651-1.jpg);
-  background-position: bottom right;
-  background-size: auto;
+html,
+body {
+  padding: 0 10px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-.center {
-  @apply max-w-screen-xl mx-auto p-4;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.nav-link {
-  @apply -m-3 p-3 flex items-start rounded-lg hover:bg-gray-50;
+* {
+  box-sizing: border-box;
 }
 
-.btn {
-  @apply ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-700 hover:bg-blue-900;
+.content-center {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: inset 0 0 8px green;
+}
+
+.header,
+.footer {
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: inset 0 0 8px red;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header nav {
+  width: 100%;
+  margin-left: 40px;
+}
+
+.header ul {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header ul li {
+}
+
+.card {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+.footer nav {
+  display: flex;
+  flex-grow: 1;
 }

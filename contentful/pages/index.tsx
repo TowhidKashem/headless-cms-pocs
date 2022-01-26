@@ -2,7 +2,12 @@ import type { NextPage } from "next";
 import { client } from "@lib/contentful";
 import Recipe from "@components/RecipeCard";
 
-const RecipeList: NextPage<{ recipes: any }> = ({ recipes }) => {
+const RecipeList: NextPage<{ recipes: any; header: any }> = ({
+  recipes,
+  header,
+}) => {
+  console.log("header", header);
+
   return (
     <section>
       {recipes.map((recipe) => (
@@ -13,6 +18,12 @@ const RecipeList: NextPage<{ recipes: any }> = ({ recipes }) => {
 };
 
 export async function getStaticProps() {
+  const { item } = await client.getEntries({
+    content_type: "headerNav",
+  });
+
+  console.log("item -------> ", item);
+
   const res = await client.getEntries({
     content_type: "recipe",
   });
@@ -20,6 +31,7 @@ export async function getStaticProps() {
   return {
     props: {
       recipes: res.items,
+      header: item,
     },
   };
 }

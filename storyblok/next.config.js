@@ -1,3 +1,4 @@
+/** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
   images: {
@@ -8,10 +9,6 @@ module.exports = {
       "tailwindui.com",
       "a.storyblok.com",
     ],
-  },
-  env: {
-    ENVIRONMENT: process.env.ENVIRONMENT,
-    STORY_BLOK_ACCESS_TOKEN: process.env.STORY_BLOK_ACCESS_TOKEN,
   },
   async rewrites() {
     return [

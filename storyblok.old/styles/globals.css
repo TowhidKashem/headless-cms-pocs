@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hero {
+  background: url(https://docrdsfx76ssb.cloudfront.net/static/1642175923/pages/wp-content/uploads/2020/05/illo-desktop-1440x651-1.jpg);
+  background-position: bottom right;
+  background-size: auto;
+}
+
+.center {
+  @apply max-w-screen-xl mx-auto p-4;
+}
+
+.nav-link {
+  @apply -m-3 p-3 flex items-start rounded-lg hover:bg-gray-50;
+}
+
+.btn {
+  @apply ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-700 hover:bg-blue-900;
+}
