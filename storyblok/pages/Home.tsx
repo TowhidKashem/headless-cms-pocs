@@ -1,18 +1,14 @@
-import type { NextPage } from "next";
-import type { StoryData } from "storyblok-js-client";
-import useStoryBlok from "@hooks/useStoryBlok";
-import { getPage } from "@utils/api";
-import Hero from "@components/Hero";
-import CardSpotlight from "@components/CardSpotlight";
+import type { NextPage } from 'next';
+import type { StoryData } from 'storyblok-js-client';
+import useStoryBlok from '@hooks/useStoryBlok';
+import { getPage } from '@utils/api';
+import Hero from '@components/Hero';
+import CardSpotlight from '@components/CardSpotlight';
 
-const Home: NextPage<{ story: StoryData; isPreview: boolean }> = ({
-  story,
-  isPreview,
-}) => {
-  // enable bridge only in prevew mode
-  story = useStoryBlok(story, isPreview);
+const Home: NextPage<{ story: StoryData }> = ({ story }) => {
+  story = useStoryBlok(story);
 
-  console.log("story", story);
+  console.log('story', story);
   const { hero, card_spotlight } = story.content;
 
   return (
@@ -24,16 +20,13 @@ const Home: NextPage<{ story: StoryData; isPreview: boolean }> = ({
 };
 
 export async function getStaticProps() {
-  const isPreview = process.env.ENVIRONMENT === "development";
-
-  const { layout, story } = await getPage(isPreview, "home");
+  const { layout, story } = await getPage('home');
 
   return {
     props: {
       layout,
-      story,
-      isPreview,
-    },
+      story
+    }
   };
 }
 

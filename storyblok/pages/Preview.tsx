@@ -1,5 +1,5 @@
-import type { NextPage } from "next";
-import { getPage } from "@utils/api";
+import type { NextPage } from 'next';
+import { getPage } from '@utils/api';
 
 const Preview: NextPage = () => {
   return (
@@ -10,15 +10,12 @@ const Preview: NextPage = () => {
 };
 
 export async function getStaticProps() {
-  const isPreview = process.env.ENVIRONMENT === "development";
-
-  const { layout } = await getPage(isPreview);
+  const { layout } = await getPage();
 
   return {
     props: {
-      layout,
-      isPreview,
-    },
+      layout
+    }
   };
 }
 

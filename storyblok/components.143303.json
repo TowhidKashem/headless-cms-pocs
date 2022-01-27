@@ -35,7 +35,7 @@
       "name": "card",
       "display_name": null,
       "created_at": "2022-01-18T22:42:37.444Z",
-      "updated_at": "2022-01-20T22:11:17.472Z",
+      "updated_at": "2022-01-27T18:11:38.880Z",
       "id": 2113524,
       "schema": {
         "thumbnail": {
@@ -52,6 +52,9 @@
         },
         "description": {
           "type": "textarea"
+        },
+        "tag": {
+          "type": "text"
         }
       },
       "image": null,
@@ -187,20 +190,52 @@
       "name": "hero",
       "display_name": null,
       "created_at": "2022-01-18T22:42:37.413Z",
-      "updated_at": "2022-01-20T22:52:02.838Z",
+      "updated_at": "2022-01-27T18:07:46.281Z",
       "id": 2113522,
       "schema": {
         "headline": {
-          "type": "text"
+          "type": "text",
+          "pos": 0
         },
         "description": {
-          "type": "textarea"
+          "type": "textarea",
+          "pos": 1
         },
-        "button_label": {
-          "type": "text"
+        "image": {
+          "type": "asset",
+          "restrict_components": true,
+          "filetypes": [
+            "images"
+          ],
+          "pos": 2
         },
-        "quote_label": {
-          "type": "text"
+        "button_text": {
+          "type": "text",
+          "pos": 3,
+          "restrict_components": true,
+          "component_whitelist": [
+            "text"
+          ]
+        },
+        "button_url": {
+          "type": "text",
+          "pos": 4,
+          "restrict_components": true,
+          "component_whitelist": [
+            "text"
+          ]
+        },
+        "link_text": {
+          "type": "text",
+          "pos": 5
+        },
+        "link_url": {
+          "type": "text",
+          "pos": 6
+        },
+        "tag_name": {
+          "type": "text",
+          "pos": 7
         }
       },
       "image": null,
@@ -211,10 +246,10 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "hero",
-      "component_group_uuid": "2bb968cd-cecd-407b-917d-1365f89f36be",
+      "component_group_uuid": "9029fdcf-3a64-4030-a00e-e9882d0f1eae",
       "color": null,
       "icon": null,
-      "component_group_name": "modules"
+      "component_group_name": "common"
     },
     {
       "name": "layout",
@@ -247,7 +282,7 @@
       "name": "Layout",
       "display_name": null,
       "created_at": "2022-01-27T02:44:42.238Z",
-      "updated_at": "2022-01-27T03:36:51.479Z",
+      "updated_at": "2022-01-27T16:50:58.072Z",
       "id": 2136813,
       "schema": {
         "header_nav_left_links": {
@@ -267,9 +302,13 @@
           "pos": 1
         },
         "cta_header": {
-          "type": "text",
-          "pos": 2,
-          "display_name": "CTA Header"
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "text"
+          ],
+          "display_name": "CTA Header",
+          "pos": 2
         },
         "cta_button": {
           "type": "bloks",
@@ -291,8 +330,12 @@
           "pos": 4
         },
         "footer_copyright_text": {
-          "type": "text",
-          "pos": 5
+          "type": "bloks",
+          "pos": 5,
+          "restrict_components": true,
+          "component_whitelist": [
+            "text"
+          ]
         },
         "header": {
           "type": "section",
@@ -426,6 +469,34 @@
       "component_group_uuid": null,
       "color": null,
       "icon": null
+    },
+    {
+      "name": "[PAGE] Blog Index",
+      "display_name": null,
+      "created_at": "2022-01-27T18:00:39.322Z",
+      "updated_at": "2022-01-27T18:06:40.847Z",
+      "id": 2139572,
+      "schema": {
+        "hero": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "hero"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "[PAGE] Blog Index",
+      "component_group_uuid": "51e909d3-6303-499f-b31f-c6ffd4fd92c8",
+      "color": null,
+      "icon": null,
+      "component_group_name": "blog"
     },
     {
       "name": "text",

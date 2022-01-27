@@ -1,11 +1,12 @@
 import type { NextPage } from 'next';
-import type { ListStoryblok } from 'storyblok.types';
+import type { ListStoryblok, TextStoryblok } from 'storyblok.types';
+import SbEditable from 'storyblok-react';
 import Image from 'next/image';
 import List from '@components/List';
 
 const Footer: NextPage<{
   footer_lists: ListStoryblok[];
-  footer_copyright_text: string;
+  footer_copyright_text: TextStoryblok;
 }> = ({ footer_lists, footer_copyright_text }) => {
   return (
     <footer className="footer content-center">
@@ -21,10 +22,12 @@ const Footer: NextPage<{
           height={40}
           alt=""
         />
-        <p>
-          <span dangerouslySetInnerHTML={{ __html: '&copy;' }} />{' '}
-          {new Date().getFullYear()} {footer_copyright_text}
-        </p>
+        <SbEditable content={footer_copyright_text}>
+          <p>
+            <span dangerouslySetInnerHTML={{ __html: '&copy;' }} />{' '}
+            {new Date().getFullYear()} {footer_copyright_text.text}
+          </p>
+        </SbEditable>
       </div>
     </footer>
   );

@@ -24,7 +24,7 @@ const Header: NextPage<{
               <li>
                 <Link href={link.url}>{link.text}</Link>
 
-                {link.dropdown_links && (
+                {link.dropdown_links && link.dropdown_links.length > 0 && (
                   <nav className="dropdown">
                     <ul>
                       {link.dropdown_links.map((link) => {
@@ -57,12 +57,8 @@ const Header: NextPage<{
           {header_nav_right_links.map((link) => (
             <SbEditable key={link._uid} content={link}>
               <li>
-                <Link href={link.url}>
-                  {link.is_button ? (
-                    <a className="btn">{link.text}</a>
-                  ) : (
-                    link.text
-                  )}
+                <Link href={link.url} className={link.is_button ? 'btn' : ''}>
+                  {link.text}
                 </Link>
               </li>
             </SbEditable>

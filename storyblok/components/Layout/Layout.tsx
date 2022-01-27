@@ -5,11 +5,7 @@ import Header from '@components/Layout/Header';
 import BottomCTA from '@components/Layout/BottomCTA';
 import Footer from '@components/Layout/Footer';
 
-const Layout: NextPage<{ story: LayoutStoryblok; isPreview: boolean }> = ({
-  story,
-  isPreview,
-  children
-}) => {
+const Layout: NextPage<{ story: LayoutStoryblok }> = ({ story, children }) => {
   const {
     header_nav_left_links,
     header_nav_right_links,
@@ -36,11 +32,11 @@ const Layout: NextPage<{ story: LayoutStoryblok; isPreview: boolean }> = ({
 
         <main className="content">{children}</main>
 
-        <BottomCTA cta_header={cta_header} cta_button={cta_button[0]} />
+        <BottomCTA cta_header={cta_header[0]} cta_button={cta_button[0]} />
 
         <Footer
           footer_lists={footer_lists}
-          footer_copyright_text={footer_copyright_text}
+          footer_copyright_text={footer_copyright_text[0]}
         />
       </div>
     </>
