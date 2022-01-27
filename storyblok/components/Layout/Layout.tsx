@@ -1,12 +1,10 @@
 import type { NextPage } from "next";
-import type { StoryData } from "storyblok-js-client";
+import type { LayoutStoryblok } from "storyblok.types";
 import Head from "next/head";
 import Header from "@components/Layout/Header";
 import Footer from "@components/Layout/Footer";
 
-const Layout: NextPage<{ story: StoryData }> = ({ story, children }) => {
-  console.log("layout story", story);
-
+const Layout: NextPage<{ story: LayoutStoryblok }> = ({ story, children }) => {
   const { header, footer } = story.content;
 
   return (

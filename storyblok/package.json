@@ -7,10 +7,9 @@
     "start": "next start",
     "lint": "next lint",
     "fetch-space-schema": "storyblok pull-components --space=143303",
-    "generate-types": "storyblok-generate-ts source=./storyblok/components.143303.json target=./storyblok"
+    "generate-types": "storyblok-generate-ts source=./storyblok/components.143303.json target=./storyblok.types"
   },
   "dependencies": {
-    "@storyblok/storyblok-editable": "^1.1.0",
     "autoprefixer": "^10.4.2",
     "axios": "^0.25.0",
     "next": "12.0.8",

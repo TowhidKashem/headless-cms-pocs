@@ -1,9 +1,8 @@
 import type { NextPage } from "next";
-import type { LayoutStoryblok } from "storyblok";
+import type { LayoutStoryblok } from "storyblok.types";
+import SbEditable from "storyblok-react";
 import Image from "next/image";
 import Link from "next/link";
-import SbEditable from "storyblok-react";
-import { sbEditable } from "@storyblok/storyblok-editable";
 
 const Header: NextPage<{ bloks: LayoutStoryblok["header"] }> = ({
   bloks = [],
@@ -24,9 +23,11 @@ const Header: NextPage<{ bloks: LayoutStoryblok["header"] }> = ({
       <nav>
         <ul>
           {header_nav_item.map((item) => (
-            <li key={item._uid}>
-              <Link href="#">{item.text}</Link>
-            </li>
+            <SbEditable key={item._uid} content={item}>
+              <li>
+                <Link href="#">{item.text}</Link>
+              </li>
+            </SbEditable>
           ))}
         </ul>
       </nav>

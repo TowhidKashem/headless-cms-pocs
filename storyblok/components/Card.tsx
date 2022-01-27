@@ -1,16 +1,19 @@
-import React from "react";
+import type { NextPage } from "next";
+import type { CardStoryblok } from "storyblok.types";
 import Image from "next/image";
-import { sbEditable } from "@storyblok/storyblok-editable";
+import SbEditable from "storyblok-react";
 
-const Card = ({ blok }) => {
+const Card: NextPage<{ blok: CardStoryblok }> = ({ blok }) => {
   const { thumbnail, title, description } = blok;
 
   return (
-    <article className="w-1/3 p-4" {...sbEditable(blok)}>
-      <Image src={thumbnail.filename} alt="" width={330} height={180} />
-      <header className="font-bold font-lg mb-3">{title}</header>
-      <p>{description}</p>
-    </article>
+    <SbEditable content={blok}>
+      <article className="w-1/3 p-4">
+        <Image src={thumbnail.filename} alt="" width={330} height={180} />
+        <header className="font-bold font-lg mb-3">{title}</header>
+        <p>{description}</p>
+      </article>
+    </SbEditable>
   );
 };
 

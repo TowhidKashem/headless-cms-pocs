@@ -1,9 +1,16 @@
 import type { NextPage } from "next";
+import type {
+  ListStoryblok,
+  CardStoryblok,
+  HeroStoryblok,
+} from "storyblok.types";
 import Hero from "@components/Hero";
 import Card from "@components/Card";
 import List from "@components/List";
 
-const RenderBlok: NextPage<{ blok: any }> = ({ blok }) => {
+const RenderBlok: NextPage<{
+  blok: ListStoryblok | CardStoryblok | HeroStoryblok;
+}> = ({ blok }) => {
   const getComponent = (component: string) => {
     const props = {
       // key: blok._uid,

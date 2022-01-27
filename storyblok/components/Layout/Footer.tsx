@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import type { LayoutStoryblok } from "storyblok";
+import type { LayoutStoryblok } from "storyblok.types";
 import Image from "next/image";
 import List from "@components/List";
 
