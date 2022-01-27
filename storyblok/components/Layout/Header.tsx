@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import type { HeaderNavItemStoryblok } from 'storyblok.types';
 import SbEditable from 'storyblok-react';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@components/Link';
 
 const Header: NextPage<{
   header_nav_left_links: HeaderNavItemStoryblok[];
@@ -12,32 +12,56 @@ const Header: NextPage<{
     <header className="header content-center">
       <Image
         src="https://docrdsfx76ssb.cloudfront.net/static/1642780665/pages/wp-content/uploads/2021/08/bitly_logo.svg"
-        width={200}
+        width={150}
         height={150}
         className="logo"
         alt=""
       />
-      <nav>
+      <nav className="left-nav">
         <ul>
-          {header_nav_left_links.map((item) => (
-            <SbEditable key={item._uid} content={item}>
+          {header_nav_left_links.map((link) => (
+            <SbEditable key={link._uid} content={link}>
               <li>
-                <Link href="#">{item.text}</Link>
+                <Link href={link.url}>{link.text}</Link>
+
+                {link.dropdown_links && (
+                  <nav className="dropdown">
+                    <ul>
+                      {link.dropdown_links.map((link) => {
+                        const { _uid, url, text, description } = link;
+
+                        return (
+                          <SbEditable key={link._uid} content={link}>
+                            <li key={_uid}>
+                              <Link href={url}>{text}</Link>
+
+                              {description && (
+                                <p>
+                                  <small>{description}</small>
+                                </p>
+                              )}
+                            </li>
+                          </SbEditable>
+                        );
+                      })}
+                    </ul>
+                  </nav>
+                )}
               </li>
             </SbEditable>
           ))}
         </ul>
       </nav>
-      <nav>
+      <nav className="right-nav">
         <ul>
-          {header_nav_right_links.map((item) => (
-            <SbEditable key={item._uid} content={item}>
+          {header_nav_right_links.map((link) => (
+            <SbEditable key={link._uid} content={link}>
               <li>
-                <Link href={item.link}>
-                  {item.is_button ? (
-                    <a className="btn">{item.text}</a>
+                <Link href={link.url}>
+                  {link.is_button ? (
+                    <a className="btn">{link.text}</a>
                   ) : (
-                    item.text
+                    link.text
                   )}
                 </Link>
               </li>

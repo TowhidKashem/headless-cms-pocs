@@ -5,7 +5,11 @@ import Header from '@components/Layout/Header';
 import BottomCTA from '@components/Layout/BottomCTA';
 import Footer from '@components/Layout/Footer';
 
-const Layout: NextPage<{ story: LayoutStoryblok }> = ({ story, children }) => {
+const Layout: NextPage<{ story: LayoutStoryblok; isPreview: boolean }> = ({
+  story,
+  isPreview,
+  children
+}) => {
   const {
     header_nav_left_links,
     header_nav_right_links,

@@ -1,8 +1,8 @@
 export interface ButtonStoryblok {
-  text?: string;
-  link?: string;
+  text: string;
+  url: string;
   _uid: string;
-  component: "button";
+  component: 'button';
   [k: string]: any;
 }
 
@@ -18,7 +18,7 @@ export interface CardStoryblok {
   title?: string;
   description?: string;
   _uid: string;
-  component: "card";
+  component: 'card';
   [k: string]: any;
 }
 
@@ -27,33 +27,26 @@ export interface CardSpotlightStoryblok {
   description?: string;
   cards: CardStoryblok[];
   _uid: string;
-  component: "card_spotlight";
-  [k: string]: any;
-}
-
-export interface DropdownMenuStoryblok {
-  dropdown_menu_item?: DropdownMenuItemStoryblok[];
-  _uid: string;
-  component: "dropdown_menu";
+  component: 'card_spotlight';
   [k: string]: any;
 }
 
 export interface DropdownMenuItemStoryblok {
-  title?: string;
+  text: string;
+  url: string;
   description?: string;
-  url?: string;
   _uid: string;
-  component: "dropdown_menu_item";
+  component: 'dropdown_menu_item';
   [k: string]: any;
 }
 
 export interface HeaderNavItemStoryblok {
-  text?: string;
-  url?: string;
+  text: string;
+  url: string;
   is_button?: boolean;
-  dropdown_menu?: DropdownMenuStoryblok[];
+  dropdown_links?: DropdownMenuItemStoryblok[];
   _uid: string;
-  component: "header_nav_item";
+  component: 'header_nav_item';
   [k: string]: any;
 }
 
@@ -63,14 +56,14 @@ export interface HeroStoryblok {
   button_label?: string;
   quote_label?: string;
   _uid: string;
-  component: "hero";
+  component: 'hero';
   [k: string]: any;
 }
 
 export interface LayoutStoryblok {
   header?: HeaderStoryblok[];
   _uid: string;
-  component: "layout";
+  component: 'layout';
   [k: string]: any;
 }
 
@@ -82,7 +75,7 @@ export interface LayoutStoryblok {
   footer_lists?: ListStoryblok[];
   footer_copyright_text?: string;
   _uid: string;
-  component: "Layout";
+  component: 'Layout';
   [k: string]: any;
 }
 
@@ -90,14 +83,14 @@ export interface ListStoryblok {
   header?: string;
   list_items: ListItemStoryblok[];
   _uid: string;
-  component: "list";
+  component: 'list';
   [k: string]: any;
 }
 
 export interface ListItemStoryblok {
   text?: string;
   _uid: string;
-  component: "list_item";
+  component: 'list_item';
   [k: string]: any;
 }
 
@@ -105,7 +98,7 @@ export interface PageStoryblok {
   header?: HeaderNavStoryblok[];
   footer?: (ListStoryblok | TextStoryblok)[];
   _uid: string;
-  component: "page";
+  component: 'page';
   uuid?: string;
   [k: string]: any;
 }
@@ -113,6 +106,6 @@ export interface PageStoryblok {
 export interface TextStoryblok {
   text?: string;
   _uid: string;
-  component: "text";
+  component: 'text';
   [k: string]: any;
 }
