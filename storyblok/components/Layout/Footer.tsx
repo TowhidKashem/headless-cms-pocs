@@ -1,18 +1,17 @@
-import type { NextPage } from "next";
-import type { LayoutStoryblok } from "storyblok.types";
-import Image from "next/image";
-import List from "@components/List";
+import type { NextPage } from 'next';
+import type { ListStoryblok } from 'storyblok.types';
+import Image from 'next/image';
+import List from '@components/List';
 
-const Footer: NextPage<{ bloks: LayoutStoryblok["footer"] }> = ({
-  bloks = [],
-}) => {
-  const lists = bloks.filter(({ component }) => component === "list");
-
+const Footer: NextPage<{
+  footer_lists: ListStoryblok[];
+  footer_copyright_text: string;
+}> = ({ footer_lists, footer_copyright_text }) => {
   return (
     <footer className="footer content-center">
       <nav>
-        {lists.map((blok) => (
-          <List key={blok._uid} blok={blok} />
+        {footer_lists.map((list) => (
+          <List key={list._uid} list={list} />
         ))}
       </nav>
       <div>
@@ -23,8 +22,8 @@ const Footer: NextPage<{ bloks: LayoutStoryblok["footer"] }> = ({
           alt=""
         />
         <p>
-          <span dangerouslySetInnerHTML={{ __html: "&copy;" }} />{" "}
-          {new Date().getFullYear()} Bitly
+          <span dangerouslySetInnerHTML={{ __html: '&copy;' }} />{' '}
+          {new Date().getFullYear()} {footer_copyright_text}
         </p>
       </div>
     </footer>

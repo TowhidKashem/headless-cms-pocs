@@ -1,3 +1,11 @@
+export interface ButtonStoryblok {
+  text?: string;
+  link?: string;
+  _uid: string;
+  component: "button";
+  [k: string]: any;
+}
+
 export interface CardStoryblok {
   thumbnail: {
     alt?: string;
@@ -39,20 +47,6 @@ export interface DropdownMenuItemStoryblok {
   [k: string]: any;
 }
 
-export interface HeaderStoryblok {
-  body?: any[];
-  _uid: string;
-  component: "header";
-  [k: string]: any;
-}
-
-export interface HeaderNavStoryblok {
-  header_nav_item?: HeaderNavItemStoryblok[];
-  _uid: string;
-  component: "header_nav";
-  [k: string]: any;
-}
-
 export interface HeaderNavItemStoryblok {
   text?: string;
   url?: string;
@@ -73,20 +67,22 @@ export interface HeroStoryblok {
   [k: string]: any;
 }
 
-export interface HomeStoryblok {
-  hero: HeroStoryblok[];
-  card_spotlight?: CardSpotlightStoryblok[];
+export interface LayoutStoryblok {
+  header?: HeaderStoryblok[];
   _uid: string;
-  component: "Home";
+  component: "layout";
   [k: string]: any;
 }
 
 export interface LayoutStoryblok {
-  header?: HeaderStoryblok[];
-  footer?: ListStoryblok[];
-  copyright_text?: string;
+  header_nav_left_links?: HeaderNavItemStoryblok[];
+  header_nav_right_links?: HeaderNavItemStoryblok[];
+  cta_header?: string;
+  cta_button?: ButtonStoryblok[];
+  footer_lists?: ListStoryblok[];
+  footer_copyright_text?: string;
   _uid: string;
-  component: "layout";
+  component: "Layout";
   [k: string]: any;
 }
 
@@ -107,10 +103,16 @@ export interface ListItemStoryblok {
 
 export interface PageStoryblok {
   header?: HeaderNavStoryblok[];
-  footer?: ListStoryblok[];
-  copyright_text?: string;
+  footer?: (ListStoryblok | TextStoryblok)[];
   _uid: string;
   component: "page";
   uuid?: string;
+  [k: string]: any;
+}
+
+export interface TextStoryblok {
+  text?: string;
+  _uid: string;
+  component: "text";
   [k: string]: any;
 }

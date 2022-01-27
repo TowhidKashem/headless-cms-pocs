@@ -1,11 +1,21 @@
-import type { NextPage } from "next";
-import type { LayoutStoryblok } from "storyblok.types";
-import Head from "next/head";
-import Header from "@components/Layout/Header";
-import Footer from "@components/Layout/Footer";
+import type { NextPage } from 'next';
+import type { LayoutStoryblok } from 'storyblok.types';
+import Head from 'next/head';
+import Header from '@components/Layout/Header';
+import BottomCTA from '@components/Layout/BottomCTA';
+import Footer from '@components/Layout/Footer';
 
 const Layout: NextPage<{ story: LayoutStoryblok }> = ({ story, children }) => {
-  const { header, footer } = story.content;
+  const {
+    header_nav_left_links,
+    header_nav_right_links,
+    cta_header,
+    cta_button,
+    footer_lists,
+    footer_copyright_text
+  } = story.content;
+
+  console.log('layout', story.content);
 
   return (
     <>
@@ -15,20 +25,19 @@ const Layout: NextPage<{ story: LayoutStoryblok }> = ({ story, children }) => {
       </Head>
 
       <div className="bitly">
-        <Header bloks={header} />
+        <Header
+          header_nav_left_links={header_nav_left_links}
+          header_nav_right_links={header_nav_right_links}
+        />
 
         <main className="content">{children}</main>
 
-        <section style={{ background: "#0b1736" }}>
-          <section className="center text-center py-16">
-            <h2 className="font-semibold text-3xl text-white mb-5">
-              More than a link shortener
-            </h2>
-            <button className="btn">Get Started for Free</button>
-          </section>
-        </section>
+        <BottomCTA cta_header={cta_header} cta_button={cta_button[0]} />
 
-        <Footer bloks={footer} />
+        <Footer
+          footer_lists={footer_lists}
+          footer_copyright_text={footer_copyright_text}
+        />
       </div>
     </>
   );

@@ -1,12 +1,12 @@
-import type { NextPage } from "next";
-import type { ListStoryblok } from "storyblok.types";
-import SbEditable from "storyblok-react";
+import type { NextPage } from 'next';
+import type { ListStoryblok } from 'storyblok.types';
+import SbEditable from 'storyblok-react';
 
-const List: NextPage<{ blok: ListStoryblok }> = ({ blok }) => {
-  const { header, list_items } = blok;
+const List: NextPage<{ list: ListStoryblok }> = ({ list }) => {
+  const { header, list_items } = list;
 
   return (
-    <SbEditable content={blok}>
+    <SbEditable content={list}>
       <ul>
         {header && (
           <li>
