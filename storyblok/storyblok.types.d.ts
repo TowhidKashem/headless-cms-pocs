@@ -54,7 +54,7 @@ export interface HeaderNavItemStoryblok {
 export interface HeroStoryblok {
   headline?: string;
   description?: string;
-  image?: {
+  image: {
     alt?: string;
     copyright?: string;
     id: number;
@@ -116,6 +116,7 @@ export interface PageStoryblok {
 }
 
 export interface PAGEBlogIndexStoryblok {
+  category_name?: TextStoryblok[];
   hero?: HeroStoryblok[];
   _uid: string;
   component: "[PAGE] Blog Index";

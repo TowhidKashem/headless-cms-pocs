@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { getPage } from '@utils/api';
+import { getStory } from '@utils/api';
 
 const Preview: NextPage = () => {
   return (
@@ -10,7 +10,7 @@ const Preview: NextPage = () => {
 };
 
 export async function getStaticProps() {
-  const { layout } = await getPage();
+  const { layout } = await getStory();
 
   return {
     props: {

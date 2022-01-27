@@ -10,13 +10,14 @@ const Header: NextPage<{
 }> = ({ header_nav_left_links, header_nav_right_links }) => {
   return (
     <header className="header content-center">
-      <Image
-        src="https://docrdsfx76ssb.cloudfront.net/static/1642780665/pages/wp-content/uploads/2021/08/bitly_logo.svg"
-        width={150}
-        height={150}
-        className="logo"
-        alt=""
-      />
+      <Link href="/">
+        <Image
+          src="https://docrdsfx76ssb.cloudfront.net/static/1642780665/pages/wp-content/uploads/2021/08/bitly_logo.svg"
+          width={150}
+          height={150}
+          alt=""
+        />
+      </Link>
       <nav className="left-nav">
         <ul>
           {header_nav_left_links.map((link) => (

@@ -1,40 +1,42 @@
 import type { NextPage } from 'next';
-import type { StoryData } from 'storyblok-js-client';
 import useStoryBlok from '@hooks/useStoryBlok';
-import { getPage } from '@utils/api';
-import Hero from '@components/Hero';
-import CardSpotlight from '@components/CardSpotlight';
+import { PAGEBlogIndexStoryblok } from 'storyblok.types';
+import { getStory, getStories } from '@utils/api';
+import HeroBlog from '@components/HeroBlog';
+import Storyblok from '@lib/storyblok';
 
-const BlogIndex: NextPage<{ story: StoryData }> = ({ story }) => {
+const BlogIndex: NextPage<{ story: PAGEBlogIndexStoryblok }> = ({ story }) => {
   story = useStoryBlok(story);
 
   console.log('story', story);
-  const { hero } = story.content;
+  const { hero, category_name } = story.content;
 
-  return <section className="blog">sss</section>;
+  return (
+    <section className="blog">
+      <section className="content-center">
+        <span className="font-bold text-sm text-gray-500">Posts about</span>
+        <h1 className="font-bold text-5xl mb-10">{category_name[0].text}</h1>
+        <HeroBlog blok={hero[0]} />
+      </section>
+    </section>
+  );
 };
 
 export async function getStaticPaths() {
-  // const res = await client.getEntries({
-  //   content_type: "recipe",
-  // });
-
-  // const paths = res.items.map((item) => {
-  //   return {
-  //     params: {
-  //       slug: item.fields.slug,
-  //     },
-  //   };
-  // });
+  const { stories } = await getStories({
+    starts_with: 'blog/category'
+  });
 
   return {
-    paths: ['/blog/category/branding'],
+    paths: stories.map(({ full_slug }) => full_slug),
     fallback: false
   };
 }
 
-export async function getStaticProps() {
-  const { layout, story } = await getPage('branding');
+export async function getStaticProps(context) {
+  const { layout, story } = await getStory(
+    `/blog/category/${context.params.slug}`
+  );
 
   return {
     props: {

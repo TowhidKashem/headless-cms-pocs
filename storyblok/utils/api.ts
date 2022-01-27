@@ -1,18 +1,25 @@
-import { StoryParams, StoryData } from 'storyblok-js-client';
+import { StoryParams, StoryData, StoriesParams } from 'storyblok-js-client';
 import Storyblok from '@lib/storyblok';
 
-export const getPage = async (
-  slug?: string
-): Promise<{ layout: StoryData; story?: StoryData }> => {
+const makeParams = (): StoryParams => {
   const isPreview = process.env.ENVIRONMENT === 'development';
-  const params: StoryParams = {
-    version: 'published'
-  };
 
   if (isPreview) {
-    params.version = 'draft';
-    params.cv = Date.now();
+    return {
+      version: 'draft',
+      cv: Date.now()
+    };
   }
+
+  return {
+    version: 'published'
+  };
+};
+
+export const getStory = async (
+  slug?: string
+): Promise<{ layout: StoryData; story?: StoryData }> => {
+  const params = makeParams();
 
   try {
     // Fetch the layout story for all routes, it includes global data like navigation, footer, etc
@@ -30,6 +37,23 @@ export const getPage = async (
         layout: layout.data.story
       };
     }
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getStories = async (query: StoriesParams['filter_query']) => {
+  const params = makeParams();
+
+  try {
+    const story = await Storyblok.getAll('cdn/stories', {
+      ...params,
+      ...query
+    });
+
+    return {
+      stories: story
+    };
   } catch (error) {
     throw error;
   }

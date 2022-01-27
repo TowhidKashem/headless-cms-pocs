@@ -11,7 +11,8 @@ module.exports = {
     ]
   },
   env: {
-    ENVIRONMENT: process.env.ENVIRONMENT
+    ENVIRONMENT: process.env.ENVIRONMENT,
+    STORY_BLOK_ACCESS_TOKEN: process.env.STORY_BLOK_ACCESS_TOKEN
   },
   async rewrites() {
     return [
