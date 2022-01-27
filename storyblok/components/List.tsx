@@ -10,7 +10,7 @@ const List: NextPage<{ blok: ListStoryblok }> = ({ blok }) => {
       <ul>
         {header && (
           <li>
-            <header>{header}</header>
+            <header className="font-bold">{header}</header>
           </li>
         )}
         {list_items.map(({ _uid, text }) => (

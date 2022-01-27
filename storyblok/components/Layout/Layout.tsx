@@ -19,6 +19,15 @@ const Layout: NextPage<{ story: LayoutStoryblok }> = ({ story, children }) => {
 
         <main className="content">{children}</main>
 
+        <section style={{ background: "#0b1736" }}>
+          <section className="center text-center py-16">
+            <h2 className="font-semibold text-3xl text-white mb-5">
+              More than a link shortener
+            </h2>
+            <button className="btn">Get Started for Free</button>
+          </section>
+        </section>
+
         <Footer bloks={footer} />
       </div>
     </>

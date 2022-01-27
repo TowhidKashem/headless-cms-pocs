@@ -10,7 +10,7 @@ const CardSpotlight: NextPage<{ blok: CardSpotlightStoryblok }> = ({
 
   return (
     <SbEditable content={blok}>
-      <section className="card-spotlight">
+      <section className="content-center">
         <header className="text-3xl text-center font-extrabold mb-3">
           {title}
         </header>

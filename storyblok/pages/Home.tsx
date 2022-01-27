@@ -12,7 +12,7 @@ const Home: NextPage<{ story: StoryData; isPreview: boolean }> = ({
   // enable bridge only in prevew mode
   story = useStoryBlok(story, isPreview);
 
-  // console.log("story", story);
+  console.log("story", story);
   const { hero, card_spotlight } = story.content;
 
   return (
