@@ -509,6 +509,47 @@
       "component_group_name": "blog"
     },
     {
+      "name": "[PAGE] Blog Post",
+      "display_name": null,
+      "created_at": "2022-01-27T22:52:43.213Z",
+      "updated_at": "2022-01-27T22:55:09.618Z",
+      "id": 2140060,
+      "schema": {
+        "title": {
+          "type": "text"
+        },
+        "date": {
+          "type": "datetime",
+          "disable_time": true
+        },
+        "bitlink": {
+          "type": "text"
+        },
+        "thumbnail": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ]
+        },
+        "content": {
+          "type": "richtext",
+          "customize_toolbar": false
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "[PAGE] Blog Post",
+      "component_group_uuid": "51e909d3-6303-499f-b31f-c6ffd4fd92c8",
+      "color": null,
+      "icon": null,
+      "component_group_name": "blog"
+    },
+    {
       "name": "text",
       "display_name": null,
       "created_at": "2022-01-27T01:13:50.551Z",

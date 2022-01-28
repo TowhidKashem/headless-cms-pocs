@@ -1,11 +1,15 @@
 import type { NextPage } from 'next';
-import type { LayoutStoryblok } from 'storyblok.types';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import classNames from 'classnames';
+import type { LayoutStoryblok } from 'storyblok.types';
 import Header from '@components/Layout/Header';
-import BottomCTA from '@components/Layout/BottomCTA';
 import Footer from '@components/Layout/Footer';
+import Spotlight from '@components/Layout/Spotlight';
 
-const Layout: NextPage<{ story: LayoutStoryblok }> = ({ story, children }) => {
+const Layout: NextPage<{
+  readonly story: LayoutStoryblok;
+}> = ({ story, children }) => {
   const {
     header_nav_left_links,
     header_nav_right_links,
@@ -15,31 +19,42 @@ const Layout: NextPage<{ story: LayoutStoryblok }> = ({ story, children }) => {
     footer_copyright_text
   } = story.content;
 
+  const { asPath } = useRouter();
+  const isBlog = asPath.split('/')[1] === 'blog';
+
   console.log('layout', story.content);
 
   return (
-    <>
+    <div className="bitly">
       <Head>
-        <title>This is the default global meta title</title>
+        <title>{isBlog ? 'Bitly Blog' : 'Bitly Site'}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="bitly">
-        <Header
-          header_nav_left_links={header_nav_left_links}
-          header_nav_right_links={header_nav_right_links}
+      <Header
+        header_nav_left_links={header_nav_left_links}
+        header_nav_right_links={header_nav_right_links}
+      />
+
+      <main className="content">{children}</main>
+
+      <section
+        className={classNames('spotlight-wrapper', {
+          blog: isBlog
+        })}
+      >
+        <Spotlight
+          cta_header={cta_header[0]}
+          cta_button={cta_button[0]}
+          isBlog={isBlog}
         />
+      </section>
 
-        <main className="content">{children}</main>
-
-        <BottomCTA cta_header={cta_header[0]} cta_button={cta_button[0]} />
-
-        <Footer
-          footer_lists={footer_lists}
-          footer_copyright_text={footer_copyright_text[0]}
-        />
-      </div>
-    </>
+      <Footer
+        footer_lists={footer_lists}
+        footer_copyright_text={footer_copyright_text[0]}
+      />
+    </div>
   );
 };
 

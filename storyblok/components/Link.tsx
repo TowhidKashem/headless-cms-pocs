@@ -7,7 +7,7 @@ const CustomLink: NextPage<
     href: string;
   } & React.LinkHTMLAttributes<HTMLAnchorElement>
 > = ({ href, children, ...anchorTagProps }) => {
-  const isPreview = process.env.ENVIRONMENT !== 'development';
+  const isPreview = process.env.ENVIRONMENT === 'development';
 
   // Disable links in preview mode otherwise anchor text is not easy to edit in the Storyblok visual editor
   return isPreview ? (

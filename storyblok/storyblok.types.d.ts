@@ -123,6 +123,24 @@ export interface PAGEBlogIndexStoryblok {
   [k: string]: any;
 }
 
+export interface PAGEBlogPostStoryblok {
+  title?: string;
+  date?: string;
+  bitlink?: string;
+  thumbnail?: {
+    alt?: string;
+    copyright?: string;
+    id: number;
+    filename: string;
+    name: string;
+    title?: string;
+  };
+  content?: any;
+  _uid: string;
+  component: "[PAGE] Blog Post";
+  [k: string]: any;
+}
+
 export interface TextStoryblok {
   text?: string;
   _uid: string;

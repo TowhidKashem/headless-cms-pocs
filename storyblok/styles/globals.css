@@ -98,6 +98,14 @@ a {
   padding: 15px;
 }
 
+.spotlight-wrapper {
+  background: #0b1736;
+}
+
+.spotlight-wrapper.blog {
+  background: #eee;
+}
+
 .footer {
   padding: 50px 10px;
 }

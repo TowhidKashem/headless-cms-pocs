@@ -42,18 +42,18 @@ export const getStory = async (
   }
 };
 
-export const getStories = async (query: StoriesParams['filter_query']) => {
+export const getStories = async (
+  query: StoriesParams['filter_query']
+): Promise<StoryData[]> => {
   const params = makeParams();
 
   try {
-    const story = await Storyblok.getAll('cdn/stories', {
+    const stories = await Storyblok.getAll('cdn/stories', {
       ...params,
       ...query
     });
 
-    return {
-      stories: story
-    };
+    return stories;
   } catch (error) {
     throw error;
   }

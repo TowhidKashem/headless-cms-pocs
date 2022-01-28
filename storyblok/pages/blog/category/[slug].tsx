@@ -1,9 +1,8 @@
-import type { NextPage } from 'next';
+import type { NextPage, GetStaticProps } from 'next';
 import useStoryBlok from '@hooks/useStoryBlok';
 import { PAGEBlogIndexStoryblok } from 'storyblok.types';
 import { getStory, getStories } from '@utils/api';
 import HeroBlog from '@components/HeroBlog';
-import Storyblok from '@lib/storyblok';
 
 const BlogIndex: NextPage<{ story: PAGEBlogIndexStoryblok }> = ({ story }) => {
   story = useStoryBlok(story);
@@ -23,19 +22,19 @@ const BlogIndex: NextPage<{ story: PAGEBlogIndexStoryblok }> = ({ story }) => {
 };
 
 export async function getStaticPaths() {
-  const { stories } = await getStories({
-    starts_with: 'blog/category'
+  const stories = await getStories({
+    starts_with: 'blog/category/'
   });
 
   return {
-    paths: stories.map(({ full_slug }) => full_slug),
+    paths: stories.map(({ full_slug }) => '/' + full_slug),
     fallback: false
   };
 }
 
-export async function getStaticProps(context) {
+export const getStaticProps: GetStaticProps = async (context) => {
   const { layout, story } = await getStory(
-    `/blog/category/${context.params.slug}`
+    'blog/category/' + context.params.slug
   );
 
   return {
@@ -44,6 +43,6 @@ export async function getStaticProps(context) {
       story
     }
   };
-}
+};
 
 export default BlogIndex;

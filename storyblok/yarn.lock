@@ -684,6 +684,11 @@ ci-info@^2.0.0:
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
   integrity sha512-5tK7EtrZ0N+OLFMthtqOj4fI2Jeb88C4CAZPu25LDVUgXJ0A3Js4PMGqrn0JU1W0Mh1/Z8wZzYPxqUrXeBboCQ==
 
+classnames@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
+
 clear@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/clear/-/clear-0.1.0.tgz#b81b1e03437a716984fd7ac97c87d73bdfe7048a"
@@ -2915,6 +2920,11 @@ storyblok-react@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/storyblok-react/-/storyblok-react-0.1.2.tgz#798672e1111cec68dc487985b1fbba15129fc90d"
   integrity sha512-68KtSgkAT/0XZ9diz3wfoPl6xOt3WJmCv03qZOZUNPs1uDFh1FHF7P9OHt6TfMcxPrv3ldjTypkQXbFdT7JnvA==
+
+storyblok-rich-text-react-renderer@^2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/storyblok-rich-text-react-renderer/-/storyblok-rich-text-react-renderer-2.5.2.tgz#20001a4e7d88405568af130d9db50fde98f6418d"
+  integrity sha512-JgTPUJsPmxhmkKpP6nNivaGiIP0Te0+HXNSDm4df6CWSCi+LSrfrYGh9OFx+Bla1UujWhdxCj9OpY3dXzbdv3w==
 
 storyblok@^3.10.4:
   version "3.10.4"
