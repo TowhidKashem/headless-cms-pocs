@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import classNames from 'classnames';
 import type { LayoutStoryblok } from 'storyblok.types';
 import Header from '@components/Layout/Header';
 import Footer from '@components/Layout/Footer';
@@ -15,6 +14,11 @@ const Layout: NextPage<{
     header_nav_right_links,
     cta_header,
     cta_button,
+    newsletter_title,
+    newsletter_description,
+    newsletter_tos,
+    about_title,
+    about_description,
     footer_lists,
     footer_copyright_text
   } = story.content;
@@ -38,17 +42,16 @@ const Layout: NextPage<{
 
       <main className="content">{children}</main>
 
-      <section
-        className={classNames('spotlight-wrapper', {
-          blog: isBlog
-        })}
-      >
-        <Spotlight
-          cta_header={cta_header[0]}
-          cta_button={cta_button[0]}
-          isBlog={isBlog}
-        />
-      </section>
+      <Spotlight
+        cta_header={cta_header[0]}
+        cta_button={cta_button[0]}
+        newsletter_title={newsletter_title[0]}
+        newsletter_description={newsletter_description[0]}
+        newsletter_tos={newsletter_tos[0]}
+        about_title={about_title[0]}
+        about_description={about_description[0]}
+        isBlog={isBlog}
+      />
 
       <Footer
         footer_lists={footer_lists}

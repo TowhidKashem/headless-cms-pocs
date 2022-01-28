@@ -1,3 +1,46 @@
+export interface BaseLayoutStoryblok {
+  header_nav_left_links?: HeaderNavItemStoryblok[];
+  header_nav_right_links?: HeaderNavItemStoryblok[];
+  cta_header?: TextStoryblok[];
+  cta_button?: ButtonStoryblok[];
+  about_title?: TextStoryblok[];
+  about_description?: TextAreaStoryblok[];
+  newsletter_title?: TextStoryblok[];
+  newsletter_description?: TextAreaStoryblok[];
+  newsletter_tos?: TextAreaStoryblok[];
+  footer_lists?: ListStoryblok[];
+  footer_copyright_text?: TextStoryblok[];
+  _uid: string;
+  component: "base_layout";
+  [k: string]: any;
+}
+
+export interface BlogListStoryblok {
+  category_name?: TextStoryblok[];
+  hero?: HeroStoryblok[];
+  _uid: string;
+  component: "blog_list";
+  [k: string]: any;
+}
+
+export interface BlogPostStoryblok {
+  title?: string;
+  date?: string;
+  bitlink?: string;
+  thumbnail?: {
+    alt?: string;
+    copyright?: string;
+    id: number;
+    filename: string;
+    name: string;
+    title?: string;
+  };
+  content?: any;
+  _uid: string;
+  component: "blog_post";
+  [k: string]: any;
+}
+
 export interface ButtonStoryblok {
   text: string;
   url: string;
@@ -79,18 +122,6 @@ export interface LayoutStoryblok {
   [k: string]: any;
 }
 
-export interface LayoutStoryblok {
-  header_nav_left_links?: HeaderNavItemStoryblok[];
-  header_nav_right_links?: HeaderNavItemStoryblok[];
-  cta_header?: TextStoryblok[];
-  cta_button?: ButtonStoryblok[];
-  footer_lists?: ListStoryblok[];
-  footer_copyright_text?: TextStoryblok[];
-  _uid: string;
-  component: "Layout";
-  [k: string]: any;
-}
-
 export interface ListStoryblok {
   header?: string;
   list_items: ListItemStoryblok[];
@@ -115,35 +146,16 @@ export interface PageStoryblok {
   [k: string]: any;
 }
 
-export interface PAGEBlogIndexStoryblok {
-  category_name?: TextStoryblok[];
-  hero?: HeroStoryblok[];
-  _uid: string;
-  component: "[PAGE] Blog Index";
-  [k: string]: any;
-}
-
-export interface PAGEBlogPostStoryblok {
-  title?: string;
-  date?: string;
-  bitlink?: string;
-  thumbnail?: {
-    alt?: string;
-    copyright?: string;
-    id: number;
-    filename: string;
-    name: string;
-    title?: string;
-  };
-  content?: any;
-  _uid: string;
-  component: "[PAGE] Blog Post";
-  [k: string]: any;
-}
-
 export interface TextStoryblok {
   text?: string;
   _uid: string;
   component: "text";
+  [k: string]: any;
+}
+
+export interface TextAreaStoryblok {
+  text_area?: string;
+  _uid: string;
+  component: "text_area";
   [k: string]: any;
 }

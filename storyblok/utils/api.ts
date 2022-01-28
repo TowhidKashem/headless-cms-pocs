@@ -23,7 +23,7 @@ export const getStory = async (
 
   try {
     // Fetch the layout story for all routes, it includes global data like navigation, footer, etc
-    const layout = await Storyblok.get('cdn/stories/layout', params);
+    const layout = await Storyblok.get('cdn/stories/base_layout', params);
 
     if (slug) {
       const story = await Storyblok.get('cdn/stories/' + slug, params);

@@ -11,7 +11,7 @@ const BlogIndex: NextPage<{ story: PAGEBlogIndexStoryblok }> = ({ story }) => {
   const { hero, category_name } = story.content;
 
   return (
-    <section className="blog">
+    <section className="blog-category">
       <section className="content-center">
         <span className="font-bold text-sm text-gray-500">Posts about</span>
         <h1 className="font-bold text-5xl mb-10">{category_name[0].text}</h1>

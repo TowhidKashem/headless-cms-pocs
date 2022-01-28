@@ -98,12 +98,47 @@ a {
   padding: 15px;
 }
 
-.spotlight-wrapper {
+.spotlight {
   background: #0b1736;
 }
 
-.spotlight-wrapper.blog {
+.spotlight.blog {
   background: #eee;
+}
+
+.spotlight.blog > .content-center {
+  display: flex;
+}
+
+.spotlight .about,
+.spotlight .newsletter {
+  width: 50%;
+  padding: 20px 45px;
+  text-align: left;
+}
+
+.spotlight .newsletter form {
+  margin: 20px 0 20px;
+}
+
+.spotlight .newsletter form label {
+  display: block;
+}
+
+.spotlight .newsletter form input {
+  height: 42px;
+  width: 280px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.spotlight .newsletter form .btn {
+  margin: 0;
+}
+
+.spotlight .newsletter form p {
+  font-size: 12px;
+  padding-top: 10px;
 }
 
 .footer {
