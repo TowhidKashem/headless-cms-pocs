@@ -2,7 +2,7 @@ import type { NextPage, GetStaticProps } from 'next';
 import useStoryBlok from '@hooks/useStoryBlok';
 import { PAGEBlogIndexStoryblok } from 'storyblok.types';
 import { getStory, getStories } from '@utils/api';
-import HeroBlog from '@components/HeroBlog';
+import HeroBlog from '@components/_old/HeroBlog';
 
 const BlogIndex: NextPage<{ story: PAGEBlogIndexStoryblok }> = ({ story }) => {
   story = useStoryBlok(story);

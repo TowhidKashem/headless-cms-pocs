@@ -18,43 +18,42 @@ const makeParams = (): StoryParams => {
 
 export const getStory = async (
   slug?: string
-): Promise<{ layout: StoryData; story?: StoryData }> => {
-  const params = makeParams();
+): Promise<{
+  story?: StoryData;
+  layout: {
+    navLinks: StoryData[];
+  };
+}> => {
+  const options = makeParams();
 
   try {
-    // Fetch the layout story for all routes, it includes global data like navigation, footer, etc
-    const layout = await Storyblok.get('cdn/stories/base_layout', params);
+    const navLinks = await Storyblok.get('cdn/links', options);
+    const story = await Storyblok.get('cdn/stories/' + slug, options);
 
-    if (slug) {
-      const story = await Storyblok.get('cdn/stories/' + slug, params);
-
-      return {
-        layout: layout.data.story,
-        story: story.data.story
-      };
-    } else {
-      return {
-        layout: layout.data.story
-      };
-    }
+    return {
+      story: story.data.story,
+      layout: {
+        navLinks: navLinks.data.links
+      }
+    };
   } catch (error) {
     throw error;
   }
 };
 
-export const getStories = async (
-  query: StoriesParams['filter_query']
-): Promise<StoryData[]> => {
-  const params = makeParams();
+// export const getStories = async (
+//   query: StoriesParams['filter_query']
+// ): Promise<StoryData[]> => {
+//   const options = makeParams();
 
-  try {
-    const stories = await Storyblok.getAll('cdn/stories', {
-      ...params,
-      ...query
-    });
+//   try {
+//     const stories = await Storyblok.getAll('cdn/stories', {
+//       ...options,
+//       ...query
+//     });
 
-    return stories;
-  } catch (error) {
-    throw error;
-  }
-};
+//     return stories;
+//   } catch (error) {
+//     throw error;
+//   }
+// };

@@ -1,7 +1,7 @@
-import type { NextPage } from "next";
-import type { CardStoryblok } from "storyblok.types";
-import Image from "next/image";
-import SbEditable from "storyblok-react";
+import type { NextPage } from 'next';
+import type { CardStoryblok } from 'storyblok.types';
+import Image from 'next/image';
+import SbEditable from 'storyblok-react';
 
 const Card: NextPage<{ blok: CardStoryblok }> = ({ blok }) => {
   const { thumbnail, title, description } = blok;

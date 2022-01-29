@@ -1,13 +1,24 @@
 import type { NextPage } from 'next';
-import type { HeaderNavItemStoryblok } from 'storyblok.types';
-import SbEditable from 'storyblok-react';
 import Image from 'next/image';
+import { StoryData } from 'storyblok-js-client';
 import Link from '@components/Link';
 
 const Header: NextPage<{
-  header_nav_left_links: HeaderNavItemStoryblok[];
-  header_nav_right_links: HeaderNavItemStoryblok[];
-}> = ({ header_nav_left_links, header_nav_right_links }) => {
+  navLinks: StoryData[];
+}> = ({ navLinks }) => {
+  console.log('navLinks', navLinks);
+
+  const leftNavLinks = navLinks.filter(({ is_folder, parent_id, slug }) => {
+    const isTopLevelPage = parent_id === 0 && !is_folder;
+    const hideFolders = ['legal', 'company'];
+    const hidePages = ['home'];
+
+    return (
+      (is_folder && !hideFolders.includes(slug)) ||
+      (isTopLevelPage && !hidePages.includes(slug))
+    );
+  });
+
   return (
     <header className="header content-center">
       <Link href="/">
@@ -20,42 +31,40 @@ const Header: NextPage<{
       </Link>
       <nav className="left-nav">
         <ul>
-          {header_nav_left_links.map((link) => (
-            <SbEditable key={link._uid} content={link}>
-              <li>
-                <Link href={link.url}>{link.text}</Link>
+          {leftNavLinks
+            .sort((a, b) => b.position - a.position)
+            .map((navLink) => {
+              const dropdownLinks = navLinks.filter(
+                (childLink) => childLink.parent_id === navLink.id
+              );
 
-                {link.dropdown_links && link.dropdown_links.length > 0 && (
-                  <nav className="dropdown">
-                    <ul>
-                      {link.dropdown_links.map((link) => {
-                        const { _uid, url, text, description } = link;
+              return (
+                <li key={navLink.uuid}>
+                  {navLink.is_folder ? (
+                    navLink.name
+                  ) : (
+                    <Link href={navLink.real_path}>{navLink.name}</Link>
+                  )}
 
-                        return (
-                          <SbEditable key={link._uid} content={link}>
-                            <li key={_uid}>
-                              <Link href={url}>{text}</Link>
-
-                              {description && (
-                                <p>
-                                  <small>{description}</small>
-                                </p>
-                              )}
-                            </li>
-                          </SbEditable>
-                        );
-                      })}
-                    </ul>
-                  </nav>
-                )}
-              </li>
-            </SbEditable>
-          ))}
+                  {dropdownLinks.length > 0 && (
+                    <nav className="dropdown">
+                      <ul>
+                        {dropdownLinks.map(({ uuid, name, real_path }) => (
+                          <li key={uuid}>
+                            <Link href={real_path}>{name}</Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                  )}
+                </li>
+              );
+            })}
         </ul>
       </nav>
       <nav className="right-nav">
         <ul>
-          {header_nav_right_links.map((link) => (
+          {/* {header_nav_right_links.map((link) => (
             <SbEditable key={link._uid} content={link}>
               <li>
                 <Link href={link.url} className={link.is_button ? 'btn' : ''}>
@@ -63,7 +72,7 @@ const Header: NextPage<{
                 </Link>
               </li>
             </SbEditable>
-          ))}
+          ))} */}
         </ul>
       </nav>
     </header>
