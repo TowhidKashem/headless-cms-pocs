@@ -1,5 +1,6 @@
-import { StoryParams, StoryData, StoriesParams } from 'storyblok-js-client';
+import { StoryParams, StoryData } from 'storyblok-js-client';
 import Storyblok from '@lib/storyblok';
+import type { LayoutProps } from '@components/Layout/Layout';
 
 const makeParams = (): StoryParams => {
   const isPreview = process.env.ENVIRONMENT === 'development';
@@ -20,9 +21,7 @@ export const getStory = async (
   slug?: string
 ): Promise<{
   story?: StoryData;
-  layout: {
-    navLinks: StoryData[];
-  };
+  layout: LayoutProps;
 }> => {
   const options = makeParams();
 

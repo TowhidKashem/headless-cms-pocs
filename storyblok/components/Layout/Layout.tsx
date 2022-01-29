@@ -1,17 +1,23 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { StoryData } from 'storyblok-js-client';
 import { objectToArray } from '@utils/array';
-import { AlternateObject } from 'storyblok-js-client';
 import Header from '@components/Layout/Header';
 import Footer from '@components/Layout/Footer';
 import Spotlight from '@components/Layout/Spotlight';
+import type { NavLinks } from './_data';
+
+export interface LayoutProps {
+  navLinks: NavLinks;
+}
 
 const Layout: NextPage<{
-  readonly layout: {
-    readonly navLinks: AlternateObject[];
-  };
-}> = ({ layout, children }) => {
-  const { navLinks } = layout;
+  readonly story: StoryData;
+  readonly layout: LayoutProps;
+}> = ({ story, layout, children }) => {
+  const { bottom_cta } = story.content;
+
+  const navLinks = objectToArray(layout.navLinks);
 
   return (
     <div className="bitly">
@@ -20,25 +26,13 @@ const Layout: NextPage<{
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header navLinks={objectToArray(navLinks)} />
+      <Header navLinks={navLinks} />
 
       <main className="content">{children}</main>
 
-      {/* <Spotlight
-        cta_header={cta_header[0]}
-        cta_button={cta_button[0]}
-        newsletter_title={newsletter_title[0]}
-        newsletter_description={newsletter_description[0]}
-        newsletter_tos={newsletter_tos[0]}
-        about_title={about_title[0]}
-        about_description={about_description[0]}
-        isBlog={isBlog}
-      /> */}
+      <Spotlight bottom_cta={bottom_cta[0]} />
 
-      {/* <Footer
-        footer_lists={footer_lists}
-        footer_copyright_text={footer_copyright_text[0]}
-      /> */}
+      <Footer navLinks={navLinks} />
     </div>
   );
 };

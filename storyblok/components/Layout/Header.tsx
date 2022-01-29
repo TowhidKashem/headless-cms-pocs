@@ -1,13 +1,11 @@
 import type { NextPage } from 'next';
+import type { NavLink } from './_data';
 import Image from 'next/image';
-import { StoryData } from 'storyblok-js-client';
 import Link from '@components/Link';
 
 const Header: NextPage<{
-  navLinks: StoryData[];
+  navLinks: NavLink[];
 }> = ({ navLinks }) => {
-  console.log('navLinks', navLinks);
-
   const leftNavLinks = navLinks.filter(({ is_folder, parent_id, slug }) => {
     const isTopLevelPage = parent_id === 0 && !is_folder;
     const hideFolders = ['legal', 'company'];
@@ -33,25 +31,26 @@ const Header: NextPage<{
         <ul>
           {leftNavLinks
             .sort((a, b) => b.position - a.position)
-            .map((navLink) => {
+            .map((parentLink) => {
               const dropdownLinks = navLinks.filter(
-                (childLink) => childLink.parent_id === navLink.id
+                (childLink) => childLink.parent_id === parentLink.id
               );
+              const hasDropdown = dropdownLinks.length > 0;
 
               return (
-                <li key={navLink.uuid}>
-                  {navLink.is_folder ? (
-                    navLink.name
+                <li key={parentLink.uuid}>
+                  {parentLink.is_folder ? (
+                    parentLink.name
                   ) : (
-                    <Link href={navLink.real_path}>{navLink.name}</Link>
+                    <Link href={parentLink.slug}>{parentLink.name}</Link>
                   )}
 
-                  {dropdownLinks.length > 0 && (
+                  {hasDropdown && (
                     <nav className="dropdown">
                       <ul>
-                        {dropdownLinks.map(({ uuid, name, real_path }) => (
+                        {dropdownLinks.map(({ uuid, name, slug }) => (
                           <li key={uuid}>
-                            <Link href={real_path}>{name}</Link>
+                            <Link href={slug}>{name}</Link>
                           </li>
                         ))}
                       </ul>
