@@ -35,7 +35,7 @@
       "name": "button",
       "display_name": null,
       "created_at": "2022-01-27T03:27:19.430Z",
-      "updated_at": "2022-01-29T01:14:58.709Z",
+      "updated_at": "2022-01-29T16:50:12.244Z",
       "id": 2136851,
       "schema": {
         "label": {
@@ -49,6 +49,15 @@
           "display_name": "URL",
           "required": true,
           "pos": 1
+        },
+        "style": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "button_style",
+          "required": false,
+          "default_value": "dark_blue",
+          "restrict_components": false
         }
       },
       "image": null,
@@ -145,6 +154,109 @@
       "component_group_name": ""
     },
     {
+      "name": "faq",
+      "display_name": "FAQ",
+      "created_at": "2022-01-29T17:21:14.294Z",
+      "updated_at": "2022-01-29T17:26:35.939Z",
+      "id": 2144027,
+      "schema": {
+        "title": {
+          "type": "text"
+        },
+        "answers": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "faq_list_item"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "FAQ",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "faq_list_item",
+      "display_name": "FAQ Item",
+      "created_at": "2022-01-29T17:19:42.375Z",
+      "updated_at": "2022-01-29T17:25:53.663Z",
+      "id": 2144026,
+      "schema": {
+        "title": {
+          "type": "text",
+          "required": true
+        },
+        "description": {
+          "type": "textarea",
+          "required": true
+        },
+        "button": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "button"
+          ],
+          "required": false,
+          "maximum": "1"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "FAQ Item",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "header",
+      "display_name": null,
+      "created_at": "2022-01-29T16:57:00.392Z",
+      "updated_at": "2022-01-29T17:07:13.498Z",
+      "id": 2144024,
+      "schema": {
+        "links": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "link"
+          ],
+          "maximum": "2"
+        },
+        "buttons": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "button"
+          ],
+          "maximum": "1"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "header",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
       "name": "hero",
       "display_name": null,
       "created_at": "2022-01-18T22:42:37.413Z",
@@ -191,12 +303,49 @@
       "component_group_name": ""
     },
     {
+      "name": "link",
+      "display_name": null,
+      "created_at": "2022-01-29T16:56:31.936Z",
+      "updated_at": "2022-01-29T16:56:51.181Z",
+      "id": 2144023,
+      "schema": {
+        "label": {
+          "type": "text",
+          "required": true
+        },
+        "url": {
+          "type": "text",
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "link",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
       "name": "Page",
       "display_name": null,
       "created_at": "2022-01-29T01:17:00.813Z",
-      "updated_at": "2022-01-29T15:26:26.665Z",
+      "updated_at": "2022-01-29T17:26:04.034Z",
       "id": 2143368,
       "schema": {
+        "header": {
+          "type": "bloks",
+          "pos": 0,
+          "restrict_components": true,
+          "component_whitelist": [
+            "header"
+          ],
+          "maximum": "1"
+        },
         "hero": {
           "type": "bloks",
           "restrict_components": true,
@@ -204,7 +353,7 @@
             "hero"
           ],
           "maximum": "1",
-          "pos": 2
+          "pos": 1
         },
         "card_spotlight": {
           "type": "bloks",
@@ -213,7 +362,18 @@
             "card_spotlight"
           ],
           "maximum": "1",
-          "required": false
+          "required": false,
+          "pos": 2
+        },
+        "faq": {
+          "type": "bloks",
+          "display_name": "FAQ",
+          "restrict_components": true,
+          "component_whitelist": [
+            "faq"
+          ],
+          "pos": 3,
+          "maximum": "1"
         },
         "bottom_cta": {
           "type": "bloks",
@@ -222,7 +382,8 @@
             "bottom_cta"
           ],
           "maximum": "1",
-          "display_name": "Bottom CTA"
+          "display_name": "Bottom CTA",
+          "pos": 4
         }
       },
       "image": null,

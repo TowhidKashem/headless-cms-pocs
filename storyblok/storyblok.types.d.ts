@@ -9,6 +9,7 @@ export interface BottomCtaStoryblok {
 export interface ButtonStoryblok {
   label: string;
   url: string;
+  style?: string;
   _uid: string;
   component: "button";
   [k: string]: any;
@@ -40,6 +41,31 @@ export interface CardSpotlightStoryblok {
   [k: string]: any;
 }
 
+export interface FaqStoryblok {
+  title?: string;
+  answers?: FaqListItemStoryblok[];
+  _uid: string;
+  component: "faq";
+  [k: string]: any;
+}
+
+export interface FaqListItemStoryblok {
+  title: string;
+  description: string;
+  button?: ButtonStoryblok[];
+  _uid: string;
+  component: "faq_list_item";
+  [k: string]: any;
+}
+
+export interface HeaderStoryblok {
+  links?: LinkStoryblok[];
+  buttons?: ButtonStoryblok[];
+  _uid: string;
+  component: "header";
+  [k: string]: any;
+}
+
 export interface HeroStoryblok {
   title?: string;
   description?: string;
@@ -57,9 +83,19 @@ export interface HeroStoryblok {
   [k: string]: any;
 }
 
+export interface LinkStoryblok {
+  label: string;
+  url: string;
+  _uid: string;
+  component: "link";
+  [k: string]: any;
+}
+
 export interface PageStoryblok {
+  header?: HeaderStoryblok[];
   hero?: HeroStoryblok[];
   card_spotlight?: CardSpotlightStoryblok[];
+  faq?: FaqStoryblok[];
   bottom_cta?: BottomCtaStoryblok[];
   _uid: string;
   component: "Page";

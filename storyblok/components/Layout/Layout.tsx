@@ -1,22 +1,21 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import { StoryData } from 'storyblok-js-client';
+import type { HeaderStoryblok, BottomCtaStoryblok } from 'storyblok.types';
+import type { NavLinks } from './_data';
 import { objectToArray } from '@utils/array';
+import Head from 'next/head';
 import Header from '@components/Layout/Header';
 import Footer from '@components/Layout/Footer';
-import Spotlight from '@components/Layout/Spotlight';
-import type { NavLinks } from './_data';
+import CTA from '@components/Layout/CTA';
 
 export interface LayoutProps {
   navLinks: NavLinks;
 }
 
 const Layout: NextPage<{
-  readonly story: StoryData;
   readonly layout: LayoutProps;
-}> = ({ story, layout, children }) => {
-  const { bottom_cta } = story.content;
-
+  readonly header: HeaderStoryblok[];
+  readonly bottom_cta: BottomCtaStoryblok[];
+}> = ({ header, bottom_cta, layout, children }) => {
   const navLinks = objectToArray(layout.navLinks);
 
   return (
@@ -26,11 +25,11 @@ const Layout: NextPage<{
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header navLinks={navLinks} />
+      <Header leftNav={navLinks} rightNav={header[0]} />
 
       <main className="content">{children}</main>
 
-      <Spotlight bottom_cta={bottom_cta[0]} />
+      <CTA bottom_cta={bottom_cta[0]} />
 
       <Footer navLinks={navLinks} />
     </div>

@@ -2,11 +2,14 @@ import type { NextPage } from 'next';
 import type { NavLink } from './_data';
 import Image from 'next/image';
 import Link from '@components/Link';
+import type { HeaderStoryblok } from 'storyblok.types';
+import SbEditable from 'storyblok-react';
 
 const Header: NextPage<{
-  navLinks: NavLink[];
-}> = ({ navLinks }) => {
-  const leftNavLinks = navLinks.filter(({ is_folder, parent_id, slug }) => {
+  readonly leftNav: NavLink[];
+  readonly rightNav: HeaderStoryblok;
+}> = ({ leftNav, rightNav }) => {
+  const leftNavLinks = leftNav.filter(({ is_folder, parent_id, slug }) => {
     const isTopLevelPage = parent_id === 0 && !is_folder;
     const hideFolders = ['legal', 'company'];
     const hidePages = ['home'];
@@ -16,6 +19,8 @@ const Header: NextPage<{
       (isTopLevelPage && !hidePages.includes(slug))
     );
   });
+
+  const { buttons, links } = rightNav;
 
   return (
     <header className="header content-center">
@@ -32,7 +37,7 @@ const Header: NextPage<{
           {leftNavLinks
             .sort((a, b) => b.position - a.position)
             .map((parentLink) => {
-              const dropdownLinks = navLinks.filter(
+              const dropdownLinks = leftNav.filter(
                 (childLink) => childLink.parent_id === parentLink.id
               );
               const hasDropdown = dropdownLinks.length > 0;
@@ -63,15 +68,18 @@ const Header: NextPage<{
       </nav>
       <nav className="right-nav">
         <ul>
-          {/* {header_nav_right_links.map((link) => (
+          {links.map((link) => (
             <SbEditable key={link._uid} content={link}>
               <li>
-                <Link href={link.url} className={link.is_button ? 'btn' : ''}>
-                  {link.text}
-                </Link>
+                <Link href={link.url}>{link.label}</Link>
               </li>
             </SbEditable>
-          ))} */}
+          ))}
+          <SbEditable content={buttons[0]}>
+            <Link href={buttons[0].url} className="btn">
+              {buttons[0].label}
+            </Link>
+          </SbEditable>
         </ul>
       </nav>
     </header>

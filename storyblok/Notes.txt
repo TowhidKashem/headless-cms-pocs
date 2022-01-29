@@ -1,9 +1,6 @@
 
 webhooks
 
-fetch all posts at once, organize inside blog folder
-organize into categories/query them
-search functionality (can't be static generated) / how to do it in nexjs
 generate static site, do all pages work?
 category post relationships
 

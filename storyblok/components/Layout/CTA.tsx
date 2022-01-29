@@ -3,7 +3,7 @@ import type { BottomCtaStoryblok } from 'storyblok.types';
 import SbEditable from 'storyblok-react';
 import Link from '@components/Link';
 
-const Spotlight: NextPage<{
+const CTA: NextPage<{
   readonly bottom_cta: BottomCtaStoryblok;
 }> = ({ bottom_cta }) => {
   const { url, label } = bottom_cta.button[0];
@@ -14,13 +14,15 @@ const Spotlight: NextPage<{
           <h2 className="font-semibold text-3xl text-white mb-5">
             <span>{bottom_cta.title}</span>
           </h2>
-          <Link href={url} className="btn">
-            {label}
-          </Link>
+          <SbEditable content={bottom_cta.button[0]}>
+            <Link href={url} className="btn">
+              {label}
+            </Link>
+          </SbEditable>
         </section>
       </section>
     </SbEditable>
   );
 };
 
-export default Spotlight;
+export default CTA;
