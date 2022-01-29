@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
-import type { NavLink } from './_data';
+import type { LinkBlok } from './_data';
 import Image from 'next/image';
 import Link from '@components/Link';
 import type { HeaderStoryblok } from 'storyblok.types';
 import SbEditable from 'storyblok-react';
 
 const Header: NextPage<{
-  readonly leftNav: NavLink[];
+  readonly leftNav: LinkBlok[];
   readonly rightNav: HeaderStoryblok;
 }> = ({ leftNav, rightNav }) => {
   const leftNavLinks = leftNav.filter(({ is_folder, parent_id, slug }) => {

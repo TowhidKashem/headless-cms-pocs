@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import type { NavLink } from './_data';
+import type { LinkBlok } from './_data';
 import Image from 'next/image';
 import Link from '@components/Link';
 
 const Footer: NextPage<{
-  navLinks: NavLink[];
+  navLinks: LinkBlok[];
 }> = ({ navLinks }) => {
   return (
     <footer className="footer content-center">

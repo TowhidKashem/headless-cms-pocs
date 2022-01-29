@@ -8,7 +8,7 @@ import Link from '@components/Link';
 const BlogPost: NextPage<{ story: PAGEBlogPostStoryblok }> = ({ story }) => {
   story = useStoryBlok(story);
 
-  console.log('story', story);
+  // console.log('story', story);
   const { title, bitlink, thumbnail, date, content } = story.content;
 
   return (

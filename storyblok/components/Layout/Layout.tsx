@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
-import type { HeaderStoryblok, BottomCtaStoryblok } from 'storyblok.types';
-import type { NavLinks } from './_data';
+import type { LayoutStoryblok } from 'storyblok.types';
+import type { LinkBloks } from './_data';
 import { objectToArray } from '@utils/array';
 import Head from 'next/head';
 import Header from '@components/Layout/Header';
@@ -8,15 +8,16 @@ import Footer from '@components/Layout/Footer';
 import CTA from '@components/Layout/CTA';
 
 export interface LayoutProps {
-  navLinks: NavLinks;
+  links: LinkBloks;
+  story: LayoutStoryblok;
 }
 
 const Layout: NextPage<{
   readonly layout: LayoutProps;
-  readonly header: HeaderStoryblok[];
-  readonly bottom_cta: BottomCtaStoryblok[];
-}> = ({ header, bottom_cta, layout, children }) => {
-  const navLinks = objectToArray(layout.navLinks);
+}> = ({ layout, children }) => {
+  const navLinks = objectToArray(layout.links);
+
+  const { header, bottom_cta } = layout.story.content;
 
   return (
     <div className="bitly">

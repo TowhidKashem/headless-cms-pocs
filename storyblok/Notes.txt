@@ -84,6 +84,8 @@ Tech stack:
   - Nextjs (React framework) - frontend
     - Uses static site generator (SSG) feature to build static files. The entire website is static files only (html/css/js) for better speed, security and SEO
 
+  - Tailwind - css framework
+
   - Deploys via webhook
     - Clicking the "publish" button on Storyblok's admin panel will update the data in the API (immediately)
     - It will also trigger a webhook which hit's an endpoint we will make that will rebuild the static site and upload it to our host to update the front end (in a minute or two)
@@ -100,7 +102,8 @@ MISC:
   - turn bitly's component lib into a npm package so that it can be shared across apps (web app, marketing site, browser extension, etc)
   - in the future rewrite the blog using something like https://frontity.org/ which is a React framework that uses wordpress as a headless CMS
 
-
+  - add nice animations
+  - point out how current site uses huge images
 
 https://bitly.com/pages/landing/discover-enterprise
 

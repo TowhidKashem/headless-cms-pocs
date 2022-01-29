@@ -1,29 +1,29 @@
 import type { NextPage } from 'next';
 import type { PageStoryblok } from 'storyblok.types';
+import SbEditable from 'storyblok-react';
 import useStoryBlok from '@hooks/useStoryBlok';
 import { getStory } from '@utils/api';
-import CardSpotlight from '@components/CardSpotlight';
-import SbEditable from 'storyblok-react';
+import Feature from '@components/Feature';
 import Layout, { LayoutProps } from '@components/Layout/Layout';
 import Hero from '@components/Hero';
 
-const Home: NextPage<{ layout: LayoutProps; story: PageStoryblok }> = ({
+const Home: NextPage<{ story: PageStoryblok; layout: LayoutProps }> = ({
   story,
   layout
 }) => {
   story = useStoryBlok(story);
 
-  const { header, bottom_cta, hero, card_spotlight, faq } = story.content;
+  const { hero, card_spotlight, faq } = story.content;
 
   const { title, answers } = faq[0];
 
   return (
     <SbEditable content={story.content}>
-      <Layout layout={layout} header={header} bottom_cta={bottom_cta}>
+      <Layout layout={layout}>
         <section className="home content-center">
           <Hero blok={hero[0]} />
 
-          <CardSpotlight blok={card_spotlight[0]} />
+          <Feature blok={card_spotlight[0]} />
 
           <SbEditable content={faq}>
             <section className="faq">

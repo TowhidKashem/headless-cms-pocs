@@ -1,16 +1,13 @@
 import type { NextPage } from 'next';
-import { getStory } from '@utils/api';
+import { getLayout } from '@utils/api';
+import Layout, { LayoutProps } from '@components/Layout/Layout';
 
-const Preview: NextPage = () => {
-  return (
-    <section className="preview content-center">
-      <p>Hey, this is the preview page!</p>
-    </section>
-  );
+const Preview: NextPage<{ layout: LayoutProps }> = ({ layout }) => {
+  return <Layout layout={layout} />;
 };
 
 export async function getStaticProps() {
-  const { layout } = await getStory();
+  const layout = await getLayout();
 
   return {
     props: {

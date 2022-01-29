@@ -17,23 +17,37 @@ const makeParams = (): StoryParams => {
   };
 };
 
+export const getLayout = async (): Promise<LayoutProps> => {
+  const options = makeParams();
+
+  try {
+    const links = await Storyblok.get('cdn/links', options); // nav links
+    const story = await Storyblok.get('cdn/stories/layout', options); // header, bottom cta
+
+    return {
+      links: links.data.links,
+      story: story.data.story
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const getStory = async (
-  slug?: string
+  slug: string
 ): Promise<{
-  story?: StoryData;
+  story: StoryData;
   layout: LayoutProps;
 }> => {
   const options = makeParams();
 
   try {
-    const navLinks = await Storyblok.get('cdn/links', options);
+    const layout = await getLayout();
     const story = await Storyblok.get('cdn/stories/' + slug, options);
 
     return {
       story: story.data.story,
-      layout: {
-        navLinks: navLinks.data.links
-      }
+      layout
     };
   } catch (error) {
     throw error;

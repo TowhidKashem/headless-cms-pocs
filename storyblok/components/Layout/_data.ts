@@ -1,4 +1,4 @@
-export interface NavLink {
+export interface LinkBlok {
   id: number;
   is_folder: boolean;
   is_startpage: boolean;
@@ -12,6 +12,6 @@ export interface NavLink {
   uuid: string;
 }
 
-export interface NavLinks {
-  [key: string]: NavLink;
+export interface LinkBloks {
+  [key: string]: LinkBlok;
 }

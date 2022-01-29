@@ -166,9 +166,26 @@ a {
   flex-direction: column;
 }
 
-.hero .btn {
+.hero .btn,
+.hero-detail .btn {
   width: 300px;
   margin: 0;
+}
+
+.hero-detail {
+  display: flex;
+}
+
+.hero-detail.left-align-thumbnail {
+  flex-direction: row-reverse;
+}
+
+.hero-detail .left {
+  width: 550px;
+}
+
+.hero-detail:not(.left-align-thumbnail) .right {
+  margin-left: auto;
 }
 
 .btn {

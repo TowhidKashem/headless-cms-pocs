@@ -1,11 +1,9 @@
-import type { NextPage } from "next";
-import type { CardSpotlightStoryblok } from "storyblok.types";
-import SbEditable from "storyblok-react";
-import Card from "@components/Card";
+import type { NextPage } from 'next';
+import type { CardSpotlightStoryblok } from 'storyblok.types';
+import SbEditable from 'storyblok-react';
+import Card from '@components/Card';
 
-const CardSpotlight: NextPage<{ blok: CardSpotlightStoryblok }> = ({
-  blok,
-}) => {
+const Feature: NextPage<{ blok: CardSpotlightStoryblok }> = ({ blok }) => {
   const { title, description, cards } = blok;
 
   return (
@@ -27,4 +25,4 @@ const CardSpotlight: NextPage<{ blok: CardSpotlightStoryblok }> = ({
   );
 };
 
-export default CardSpotlight;
+export default Feature;
