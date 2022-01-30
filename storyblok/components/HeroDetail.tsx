@@ -20,12 +20,14 @@ const HeroDetail: NextPage<{
         <div className="left">
           <h2 className="font-bold text-2xl mb-5">{title}</h2>
           <p className="text-md text-gray-500 mb-10">{description}</p>
-          <a
-            href={button[0].url}
-            className="btn text-xl font-normal py-4 px-8 mb-3"
-          >
-            {button[0].label}
-          </a>
+          {button.length > 0 && (
+            <a
+              href={button[0].url}
+              className="btn text-xl font-normal py-4 px-8 mb-3"
+            >
+              {button[0].label}
+            </a>
+          )}
         </div>
         <div className="right">
           <Image src={thumbnail.filename} alt="" width={470} height={210} />

@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import type { LinkBlok } from './_data';
+import { resourcesDropdown } from './_data';
 import Image from 'next/image';
 import Link from '@components/Link';
 
@@ -22,11 +23,13 @@ const Footer: NextPage<{
                 <li>
                   <strong>{parentLink.name}</strong>
                 </li>
-                {dropdownLinks.map(({ uuid, name, slug }) => (
-                  <li key={uuid}>
-                    <Link href={slug}>{name}</Link>
-                  </li>
-                ))}
+                {parentLink.slug === 'resources'
+                  ? resourcesDropdown
+                  : dropdownLinks.map(({ uuid, name, slug }) => (
+                      <li key={uuid}>
+                        <Link href={`/pages/${slug}`}>{name}</Link>
+                      </li>
+                    ))}
               </ul>
             );
           })}

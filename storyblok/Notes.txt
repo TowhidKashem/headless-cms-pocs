@@ -2,10 +2,8 @@
 webhooks
 
 generate static site, do all pages work?
-category post relationships
 
 draft vs published copies
-data sources
 apps
 translations
 optimizely
@@ -104,6 +102,7 @@ MISC:
 
   - add nice animations
   - point out how current site uses huge images
+
 
 https://bitly.com/pages/landing/discover-enterprise
 

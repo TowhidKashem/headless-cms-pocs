@@ -93,7 +93,6 @@ a {
 }
 
 .card {
-  border: 1px solid #ccc;
   margin-bottom: 10px;
   padding: 15px;
 }
@@ -220,4 +219,88 @@ a {
 .bottom-cta {
   background: #eee;
   padding: 30px 0;
+}
+
+/* Resource page */
+.resource-page .content {
+  margin-bottom: 20px;
+}
+
+.resource-page .content img {
+  max-width: 600px;
+}
+
+.resource-page .content p {
+  padding-bottom: 30px;
+  font-size: 20px;
+}
+
+.resource-page .content ul {
+  list-style-type: disc;
+}
+
+.resource-page .content ul li {
+  margin-bottom: 10px;
+}
+
+.resource-page .content ul li p {
+  padding-bottom: 0;
+}
+
+/* Resources Index */
+.resources-index .stage {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 50px;
+}
+
+.resources-index .stage main {
+  flex: 1;
+}
+
+.resources-index .stage aside {
+  margin-right: 100px;
+}
+
+.resources-index .stage aside header {
+  font-size: 22px;
+}
+
+.resources-index .stage aside .tag {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  background: #eee;
+  color: #444;
+  font-size: 20px;
+}
+
+.resources-index .hero {
+  background-size: 500px;
+  background-position: top right;
+}
+
+.resources-index .hero h2 {
+  padding-right: 500px;
+  font-size: 45px;
+  margin-top: -40px;
+}
+
+.resources-index .hero p {
+  margin-bottom: -20px;
+}
+
+.resources-index .card {
+  border: 1px solid #eee;
+  box-shadow: 0 0 8px #eee;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 320px;
+  padding: 0;
+  margin-right: 30px;
+}
+
+.resources-index .card header {
+  padding: 10px 20px;
 }

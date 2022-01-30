@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from '@components/Link';
 import type { HeaderStoryblok } from 'storyblok.types';
 import SbEditable from 'storyblok-react';
+import { resourcesDropdown } from './_data';
 
 const Header: NextPage<{
   readonly leftNav: LinkBlok[];
@@ -12,7 +13,7 @@ const Header: NextPage<{
   const leftNavLinks = leftNav.filter(({ is_folder, parent_id, slug }) => {
     const isTopLevelPage = parent_id === 0 && !is_folder;
     const hideFolders = ['legal', 'company'];
-    const hidePages = ['home'];
+    const hidePages = ['layout', 'home', 'resource-index'];
 
     return (
       (is_folder && !hideFolders.includes(slug)) ||
@@ -50,17 +51,21 @@ const Header: NextPage<{
                     <Link href={parentLink.slug}>{parentLink.name}</Link>
                   )}
 
-                  {hasDropdown && (
+                  {parentLink.slug === 'resources' ? (
+                    resourcesDropdown
+                  ) : hasDropdown ? (
                     <nav className="dropdown">
                       <ul>
-                        {dropdownLinks.map(({ uuid, name, slug }) => (
-                          <li key={uuid}>
-                            <Link href={slug}>{name}</Link>
-                          </li>
-                        ))}
+                        {dropdownLinks
+                          .sort((a, b) => b.position - a.position)
+                          .map(({ uuid, name, slug }) => (
+                            <li key={uuid}>
+                              <Link href={'/pages/' + slug}>{name}</Link>
+                            </li>
+                          ))}
                       </ul>
                     </nav>
-                  )}
+                  ) : null}
                 </li>
               );
             })}

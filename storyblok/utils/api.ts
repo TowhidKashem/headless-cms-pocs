@@ -1,8 +1,8 @@
-import { StoryParams, StoryData } from 'storyblok-js-client';
+import { StoryParams, StoryData, StoriesParams } from 'storyblok-js-client';
 import Storyblok from '@lib/storyblok';
 import type { LayoutProps } from '@components/Layout/Layout';
 
-const makeParams = (): StoryParams => {
+export const makeParams = (): StoryParams => {
   const isPreview = process.env.ENVIRONMENT === 'development';
 
   if (isPreview) {
@@ -54,19 +54,19 @@ export const getStory = async (
   }
 };
 
-// export const getStories = async (
-//   query: StoriesParams['filter_query']
-// ): Promise<StoryData[]> => {
-//   const options = makeParams();
+export const getStories = async (
+  query: StoriesParams['filter_query']
+): Promise<StoryData[]> => {
+  const options = makeParams();
 
-//   try {
-//     const stories = await Storyblok.getAll('cdn/stories', {
-//       ...options,
-//       ...query
-//     });
+  try {
+    const stories = await Storyblok.getAll('cdn/stories', {
+      ...options,
+      ...query
+    });
 
-//     return stories;
-//   } catch (error) {
-//     throw error;
-//   }
-// };
+    return stories;
+  } catch (error) {
+    throw error;
+  }
+};

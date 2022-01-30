@@ -8,7 +8,7 @@ const Card: NextPage<{ blok: CardStoryblok }> = ({ blok }) => {
 
   return (
     <SbEditable content={blok}>
-      <article className="w-1/3 p-4">
+      <article className="card w-1/3 p-4">
         <Image src={thumbnail.filename} alt="" width={330} height={180} />
         <header className="font-bold font-lg mb-3">{title}</header>
         <p>{description}</p>

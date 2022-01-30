@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
-import type { CardSpotlightStoryblok } from 'storyblok.types';
+import type { FeatureStoryblok } from 'storyblok.types';
 import SbEditable from 'storyblok-react';
 import Card from '@components/Card';
 
-const Feature: NextPage<{ blok: CardSpotlightStoryblok }> = ({ blok }) => {
+const Feature: NextPage<{ blok: FeatureStoryblok }> = ({ blok }) => {
   const { title, description, cards } = blok;
 
   return (

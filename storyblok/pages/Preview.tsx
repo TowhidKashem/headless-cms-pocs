@@ -1,3 +1,4 @@
+// This page is only used by storyblok to preview the "Layout" story
 import type { NextPage } from 'next';
 import { getLayout } from '@utils/api';
 import Layout, { LayoutProps } from '@components/Layout/Layout';

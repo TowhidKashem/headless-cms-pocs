@@ -30,7 +30,7 @@ const Home: NextPage<{ story: PageStoryblok; layout: LayoutProps }> = ({
               <header className="text-3xl text-center font-bold mb-3">
                 {title}
               </header>
-              {answers.map((answer) => (
+              {answers.map((answer: any) => (
                 <SbEditable key={answer.title} content={answer}>
                   <details className="mb-8">
                     <summary className="text-2xl font-bold">
